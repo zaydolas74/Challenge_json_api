@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let messages = [
-  { user: "pikachu", message: "Wassup" },
-  { user: "Zayd", message: "Yoo hello" },
+  { id: 1, user: "pikachu", message: "Wassup" },
+  { id2: 2, user: "Zayd", message: "Yoo hello" },
 ];
 
 //GET1
