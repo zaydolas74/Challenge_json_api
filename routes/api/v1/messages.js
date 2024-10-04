@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let messages = [
-  { id: 1, user: "pikachu", message: "Wassup" },
-  { id: 2, user: "Zayd", message: "Yoo hello" },
+  { id: 0, user: "pikachu", message: "Wassup" },
+  { id: 1, user: "Zayd", message: "Yoo hello" },
 ];
 
 //GET1
@@ -34,7 +34,10 @@ router.post("/", function (req, res) {
     status: "success",
     message: "Message created",
     data: {
-      user: "Pikachu",
+      message: {
+        user: req.body.user,
+        text: req.body.text,
+      },
     },
   });
 });
@@ -56,9 +59,6 @@ router.delete("/:id", function (req, res) {
   res.json({
     status: "success",
     message: `Message with ID ${req.params.id} deleted`,
-    data: {
-      _id: req.params.id,
-    },
   });
 });
 
