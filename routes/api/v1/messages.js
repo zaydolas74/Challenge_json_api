@@ -1,0 +1,83 @@
+const express = require("express");
+const router = express.Router();
+
+let databank = [
+  { user: "Pikachu", message: "Wassup" },
+  { user: "Zayd", message: "Yoo hello" },
+];
+
+//GET1
+router.get("/", function (req, res) {
+  res.json({
+    status: "success",
+    message: "Retrieved all messages",
+    data: {
+      databank,
+    },
+  });
+});
+
+//GET2 ID
+router.get("/:id", function (req, res) {
+  res.json({
+    status: "success",
+    message: `Retrieved message with ID ${req.params.id}`,
+    data: {
+      message: databank[req.params.id],
+    },
+  });
+});
+
+//POST
+router.post("/", function (req, res) {
+  res.json({
+    status: "success",
+    message: "Message created",
+    data: {
+      message: {
+        user: req.body.user,
+        text: req.body.text,
+      },
+    },
+  });
+});
+
+//PUT
+router.put("/:id", function (req, res) {
+  res.json({
+    status: "succes",
+    message: "Message updated",
+    data: {
+      message: {
+        user: "Pikachu",
+        text: "Hi, i'm an updated message",
+      },
+    },
+  });
+});
+
+//DELETE
+router.delete("/:id", function (req, res) {
+  res.json({
+    status: "success",
+    message: `Message with ID ${req.params.id} deleted`,
+  });
+});
+
+//GET3 USER
+router.get("/", function (req, res) {
+  const messagesUser = databank.filter(
+    (message) => message.user === req.query.user
+  );
+
+  res.json({
+    status: "success",
+    message: `Messages from user ${req.query.user}`,
+
+    data: {
+      messages: messagesUser,
+    },
+  });
+});
+
+module.exports = router;
