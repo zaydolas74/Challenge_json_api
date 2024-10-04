@@ -34,10 +34,7 @@ router.post("/", function (req, res) {
     status: "success",
     message: "Message created",
     data: {
-      message: {
-        user: req.body.user,
-        text: req.body.text,
-      },
+      user: req.body.user,
     },
   });
 });
@@ -46,12 +43,9 @@ router.post("/", function (req, res) {
 router.put("/:id", function (req, res) {
   res.json({
     status: "succes",
-    message: "Message updated",
+    message: "PUT Message",
     data: {
-      message: {
-        user: "Pikachu",
-        text: "Hi, i'm an updated message",
-      },
+      user: "Pikachu",
     },
   });
 });
@@ -61,6 +55,11 @@ router.delete("/:id", function (req, res) {
   res.json({
     status: "success",
     message: `Message with ID ${req.params.id} deleted`,
+    data: {
+      message: {
+        _id: req.params.id,
+      },
+    },
   });
 });
 
