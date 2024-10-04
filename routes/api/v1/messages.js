@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-let databank = [
+let messages = [
   { user: "pikachu", message: "Wassup" },
   { user: "Zayd", message: "Yoo hello" },
 ];
@@ -10,9 +10,9 @@ let databank = [
 router.get("/", function (req, res) {
   res.json({
     status: "success",
-    message: "Retrieved all messages",
+    message: "GETTING messages",
     data: {
-      databank,
+      messages: messages,
     },
   });
 });
@@ -21,9 +21,9 @@ router.get("/", function (req, res) {
 router.get("/:id", function (req, res) {
   res.json({
     status: "success",
-    message: `Retrieved message with ID ${req.params.id}`,
+    message: `GETTING message with ID ${req.params.id}`,
     data: {
-      message: databank[req.params.id],
+      message: messages[req.params.id],
     },
   });
 });
@@ -66,7 +66,7 @@ router.delete("/:id", function (req, res) {
 
 //GET3 USER
 router.get("/", function (req, res) {
-  const messagesUser = databank.filter(
+  const messagesUser = messages.filter(
     (message) => message.user === req.query.user
   );
 
