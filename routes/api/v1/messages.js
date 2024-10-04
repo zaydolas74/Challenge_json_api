@@ -59,6 +59,9 @@ router.delete("/:id", function (req, res) {
   res.json({
     status: "success",
     message: `Message with ID ${req.params.id} deleted`,
+    data: {
+      _id: req.params.id,
+    },
   });
 });
 
