@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let messages = [
-  { id: 0, user: "pikachu", message: "Wassup" },
-  { id: 1, user: "Zayd", message: "Yoo hello" },
+  { id: 1, user: "pikachu", message: "Wassup" },
+  { id: 2, user: "Zayd", message: "Yoo hello" },
 ];
 
 //GET1
@@ -34,10 +34,7 @@ router.post("/", function (req, res) {
     status: "success",
     message: "Message created",
     data: {
-      message: {
-        user: req.body.user,
-        text: req.body.text,
-      },
+      user: "Pikachu",
     },
   });
 });
