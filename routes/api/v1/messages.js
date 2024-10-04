@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 let databank = [
-  { user: "Pikachu", message: "Wassup" },
+  { user: "pikachu", message: "Wassup" },
   { user: "Zayd", message: "Yoo hello" },
 ];
 
