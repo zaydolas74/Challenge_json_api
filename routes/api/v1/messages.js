@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let messages = [
-  { user: "pikachu", message: "Wassup" },
-  { user: "Zayd", message: "Yoo hello" },
+  { id: 0, user: "pikachu", message: "Wassup" },
+  { id: 1, user: "Zayd", message: "Yoo hello" },
 ];
 
 //GET1
@@ -48,10 +48,8 @@ router.put("/:id", function (req, res) {
     status: "succes",
     message: "Message updated",
     data: {
-      message: {
-        user: "Pikachu",
-        text: "Hi, i'm an updated message",
-      },
+      user: "Pikachu",
+      text: "Hi, i'm an updated message",
     },
   });
 });
