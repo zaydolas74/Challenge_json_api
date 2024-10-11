@@ -8,6 +8,9 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const apiMessagesRouter = require("./routes/api/v1/messages");
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://127.0.0.1:27017/messages");
+
 const app = express();
 
 // view engine setup

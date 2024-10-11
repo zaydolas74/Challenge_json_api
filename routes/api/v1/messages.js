@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const messagesController = require("../../../controllers/api/v1/messages");
 
 let messages = [
   { id: 1, user: "pikachu", message: "Wassup" },
@@ -7,15 +8,7 @@ let messages = [
 ];
 
 //GET1
-router.get("/", function (req, res) {
-  res.json({
-    status: "success",
-    message: "GETTING messages",
-    data: {
-      messages: messages,
-    },
-  });
-});
+router.get("/", messagesController.getAll);
 
 //GET2 ID
 router.get("/:id", function (req, res) {
@@ -29,15 +22,7 @@ router.get("/:id", function (req, res) {
 });
 
 //POST
-router.post("/", function (req, res) {
-  res.json({
-    status: "success",
-    message: "Message created",
-    data: {
-      user: req.body.user,
-    },
-  });
-});
+router.post("/", messagesController.create);
 
 //PUT
 router.put("/:id", function (req, res) {
