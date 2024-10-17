@@ -11,57 +11,18 @@ let messages = [
 router.get("/", messagesController.getAll);
 
 //GET2 ID
-router.get("/:id", function (req, res) {
-  res.json({
-    status: "success",
-    message: `GETTING message with ID ${req.params.id}`,
-    data: {
-      message: messages[req.params.id],
-    },
-  });
-});
+router.get("/:id", messagesController.getById);
 
 //POST
 router.post("/", messagesController.create);
 
 //PUT
-router.put("/:id", function (req, res) {
-  res.json({
-    status: "succes",
-    message: "PUT Message",
-    data: {
-      user: "Pikachu",
-    },
-  });
-});
+router.put("/:id", messagesController.update);
 
 //DELETE
-router.delete("/:id", function (req, res) {
-  res.json({
-    status: "success",
-    message: `Message with ID ${req.params.id} deleted`,
-    data: {
-      message: {
-        _id: req.params.id,
-      },
-    },
-  });
-});
+router.delete("/:id", messagesController.remove);
 
-//GET3 USER
-router.get("/", function (req, res) {
-  const messagesUser = messages.filter(
-    (message) => message.user === req.query.user
-  );
-
-  res.json({
-    status: "success",
-    message: `Messages from user ${req.query.user}`,
-
-    data: {
-      messages: messagesUser,
-    },
-  });
-});
+//GET3
+router.get("/user/:user", messagesController.getMessagesByUser);
 
 module.exports = router;
